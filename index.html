@@ -1,228 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title> Day Nunes Acessórios</title>
+<meta charset="UTF-8">
+<title>Day Nunes Acessórios</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #fff0f6, #ffe4ec);
-    }
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #fff0f6, #ffe4ec);
+}
 
-    header {
-      background: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946') no-repeat center;
-      background-size: cover;
-      color: #ffffff;
-      padding: 60px 20px;
-      text-align: center;
-      position: relative;
-    }
+/* HEADER */
+header {
+  background: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946') no-repeat center;
+  background-size: cover;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
 
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 57, 140, 0.5);
-    }
+header::before {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(255,57,140,0.5);
+  top:0; left:0;
+}
 
-    header h1, header p {
-      position: relative;
-      z-index: 1;
-    }
+header h1, header p { position: relative; }
 
-    header h1 {
-      font-size: 42px;
-      font-weight: bold;
-      text-shadow: 0 0 10px rgba(255,255,255,0.9),
-                   0 0 25px rgba(255, 57, 140, 0.9);
-    }
+/* NAV */
+nav {
+  background:#1f1f1f;
+  padding:12px;
+  text-align:center;
+}
 
-    header p {
-      font-size: 18px;
-      margin-top: 10px;
-    }
+nav a {
+  color:#fff;
+  margin:0 15px;
+  text-decoration:none;
+}
 
-    nav {
-      background-color: #1f1f1f;
-      padding: 12px;
-      text-align: center;
-    }
+nav a:hover { color:#ff85b3; }
 
-    nav a {
-      color: #ffffff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+/* GRID */
+.produtos {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  padding:20px;
+  max-width:1200px;
+  margin:auto;
+}
 
-    nav a:hover {
-      color: #ff85b3;
-    }
+.produto {
+  background: rgba(255,255,255,0.8);
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
 
-    .container {
-      padding: 20px;
-      position: relative;
-    }
+.produto img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px;
+}
 
-    .container::before {
-      content: "🌸 🌷 🌸 🌸";
-      position: absolute;
-      top: 0;
-      left: 10px;
-      font-size: 25px;
-      opacity: 0.3;
-    }
+/* BOTÕES */
+.botao {
+  background:linear-gradient(90deg,#ff398c,#ff85b3);
+  border:none;
+  padding:10px;
+  margin-top:8px;
+  border-radius:20px;
+  color:white;
+  cursor:pointer;
+  display:block;
+}
 
-    .container::after {
-      content: "🌸 🌷 🌸 🌸";
-      position: absolute;
-      bottom: 0;
-      right: 10px;
-      font-size: 25px;
-      opacity: 0.3;
-    }
+/* CARRINHO */
+.carrinho {
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  width:250px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
 
-    .produtos {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+.carrinho h3 {
+  margin-top:0;
+}
 
-    .produto {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      width: 220px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
+.finalizar {
+  background:#25D366;
+  color:white;
+  padding:10px;
+  border:none;
+  width:100%;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:10px;
+}
 
-    .produto:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(255, 57, 140, 0.4);
-    }
+/* RESPONSIVO */
+@media(max-width:1024px){
+  .produtos { grid-template-columns:repeat(2,1fr); }
+}
 
-    .produto img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .botao {
-      background: linear-gradient(90deg, #ff398c, #ff85b3);
-      border: none;
-      padding: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 20px;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .botao:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #ff85b3;
-    }
-
-    .contato {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 18px;
-    }
-
-    footer {
-      background: linear-gradient(90deg, #ff85b3, #ff398c);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+@media(max-width:600px){
+  .produtos { grid-template-columns:1fr; }
+  .carrinho { width:90%; right:5%; }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Day Nunes Acessórios</h1>
-  <p>Estilo e elegância para você</p>
+<h1>Day Nunes Acessórios</h1>
+<p>Estilo e elegância para você</p>
 </header>
 
 <nav>
-  <a href="#">Início</a>
-  <a href="#">Produtos</a>
-  <a href="#contato">Contato</a>
+<a href="#">Início</a>
+<a href="#">Produtos</a>
 </nav>
 
-<div class="container">
-  <h2>Produtos</h2>
-
-  <div class="produtos">
-    
-    <div class="produto">
-      <img src="https://images.unsplash.com/photo-1602752250015-52934bc45613" alt="Colar">
-      <h3>Colar</h3>
-      <p>R$ 49,90</p>
-      <a href="https://wa.me/5571991178867?text=Olá%2C%20gostaria%20de%20comprar%20o%20Colar" target="_blank" class="botao">Comprar</a>
-    </div>
-
-    <div class="produto">
-      <img src="https://images.unsplash.com/photo-1588444650700-6d5d6c4b9f1c" alt="Pulseira">
-      <h3>Pulseira</h3>
-      <p>R$ 29,90</p>
-      <a href="https://wa.me/5571991178867?text=Olá%2C%20gostaria%20de%20comprar%20a%20Pulseira" target="_blank" class="botao">Comprar</a>
-    </div>
-
-    <div class="produto">
-      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083" alt="Óculos">
-      <h3>Óculos</h3>
-      <p>R$ 99,90</p>
-      <a href="https://wa.me/5571991178867?text=Olá%2C%20gostaria%20de%20comprar%20o%20Óculos" target="_blank" class="botao">Comprar</a>
-    </div>
-
-  </div>
-
-  <div id="contato" class="contato">
-    <h2>Contato</h2>
-    <p>📞 WhatsApp: (71) 99117-8867</p>
-    <p>📷 Instagram: 
-      <a href="https://instagram.com/daynunes_acessoriosdeluxo" target="_blank">
-        @daynunes_acessoriosdeluxo
-      </a>
-    </p>
-  </div>
+<!-- CARRINHO -->
+<div class="carrinho">
+<h3>🛒 Carrinho</h3>
+<ul id="listaCarrinho"></ul>
+<button class="finalizar" onclick="enviarWhats()">Finalizar Pedido</button>
 </div>
 
-<footer>
-  <p>&copy; Acessórios de luxo</p>
-  <p>
-    Contato: (71) 99117-8867 | 
-    <a href="https://instagram.com/daynunes_acessoriosdeluxo" target="_blank">
-      @daynunes_acessoriosdeluxo
-    </a>
-  </p>
-</footer>
+<!-- PRODUTOS -->
+<div class="produtos">
+
+<div class="produto">
+<img src="Fotos/colar-gota.jpg">
+<h3>Colar Gota</h3>
+<p>R$ 79,99</p>
+<button class="botao" onclick="addCarrinho('Colar Gota',79.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Fotos/Brincos.jpg">
+<h3>Brincos</h3>
+<p>R$ 59,99</p>
+<button class="botao" onclick="addCarrinho('Brincos',59.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Fotos/colar aro.jpg">
+<h3>Colar Aro</h3>
+<p>R$ 109,99</p>
+<button class="botao" onclick="addCarrinho('Colar Aro',109.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Fotos/colar espiral.jpg">
+<h3>Colar Espiral</h3>
+<p>R$ 79,99</p>
+<button class="botao" onclick="addCarrinho('Colar Espiral',79.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Fotos/Brinco coracao.jpg">
+<h3>Brinco Coração</h3>
+<p>R$ 49,99</p>
+<button class="botao" onclick="addCarrinho('Brinco Coração',49.99)">Adicionar</button>
+</div>
+
+<div class="produto">
+<img src="Fotos/brinco estrela.jpg">
+<h3>Brinco Estrela</h3>
+<p>R$ 49,99</p>
+<button class="botao" onclick="addCarrinho('Brinco Estrela',49.99)">Adicionar</button>
+</div>
+
+</div>
+
+<script>
+let carrinho = [];
+
+function addCarrinho(nome, preco){
+  carrinho.push({nome, preco});
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho(){
+  let lista = document.getElementById("listaCarrinho");
+  lista.innerHTML = "";
+
+  carrinho.forEach(item => {
+    let li = document.createElement("li");
+    li.innerText = item.nome + " - R$ " + item.preco;
+    lista.appendChild(li);
+  });
+}
+
+function enviarWhats(){
+  let mensagem = "Olá, gostaria de comprar:%0A";
+
+  carrinho.forEach(item=>{
+    mensagem += "- " + item.nome + " (R$ " + item.preco + ")%0A";
+  });
+
+  window.open("https://wa.me/5571991178867?text=" + mensagem);
+}
+</script>
 
 </body>
 </html>
