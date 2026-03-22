@@ -140,6 +140,9 @@ nav a:hover { color:#ff85b3; }
 <div class="carrinho">
 <h3>🛒 Carrinho</h3>
 <ul id="listaCarrinho"></ul>
+
+<p id="totalCarrinho"><strong>Total: R$ 0,00</strong></p>
+
 <button class="finalizar" onclick="enviarWhats()">Finalizar Pedido</button>
 </div>
 
@@ -200,21 +203,45 @@ function addCarrinho(nome, preco){
 
 function atualizarCarrinho(){
   let lista = document.getElementById("listaCarrinho");
-  lista.innerHTML = "";
+  let totalElemento = document.getElementById("totalCarrinho");
 
-  carrinho.forEach(item => {
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    total += item.preco;
+
     let li = document.createElement("li");
-    li.innerText = item.nome + " - R$ " + item.preco;
+
+    li.innerHTML = `
+      ${item.nome} - R$ ${item.preco.toFixed(2)}
+      <button onclick="removerItem(${index})" 
+        style="margin-left:10px; background:red; color:white; border:none; border-radius:5px; cursor:pointer;">
+        ❌
+      </button>
+    `;
+
     lista.appendChild(li);
   });
+
+  totalElemento.innerHTML = "<strong>Total: R$ " + total.toFixed(2) + "</strong>";
+}
+
+function removerItem(index){
+  carrinho.splice(index, 1);
+  atualizarCarrinho();
 }
 
 function enviarWhats(){
   let mensagem = "Olá, gostaria de comprar:%0A";
+  let total = 0;
 
   carrinho.forEach(item=>{
-    mensagem += "- " + item.nome + " (R$ " + item.preco + ")%0A";
+    mensagem += "- " + item.nome + " (R$ " + item.preco.toFixed(2) + ")%0A";
+    total += item.preco;
   });
+
+  mensagem += "%0ATotal: R$ " + total.toFixed(2);
 
   window.open("https://wa.me/5571991178867?text=" + mensagem);
 }
